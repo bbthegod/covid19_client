@@ -1,0 +1,85 @@
+.user-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  color: white;
+}
+.user-box {
+  width: 30%;
+  border-radius: 25px;
+  background-color: #212121;
+}
+.title {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.mat-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.input {
+  width: 80%;
+  margin-top: 15px;
+  min-height: 48px;
+  border: none;
+  border-radius: 2px;
+  text-indent: 10px;
+  background-color: #2f2f2f;
+  font-size: 16px;
+  color: white;
+}
+.submit-button {
+  margin-top: 30px;
+  color: white;
+  background: #ff7043;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  height: 50px;
+  width: 300px;
+}
+/*============================*/
+.button {
+  text-align: center;
+  margin-top: 10%;
+  height: 100px;
+}
+.start-button {
+  background: #ff7043;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  height: 50px;
+  width: 300px;
+}
+/* Navigation */
+.nav {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.nav-logo {
+  height: 40px;
+  position: absolute;
+  top: 12px;
+}
+.nav-menu {
+  position: absolute;
+  right: 20px;
+}
+.nav-menu button {
+  background-color: #3c3c3c;
+  color: white;
+}
+.nav-menu mat-menu {
+  margin-top: 200px;
+}

@@ -1,0 +1,39 @@
+.button {
+  text-align: center;
+  margin-top: 10%;
+  height: 100px;
+}
+.start-button {
+  background: #ff7043;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  height: 50px;
+  width: 300px;
+}
+/* Navigation */
+.nav {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.nav-logo {
+  height: 40px;
+  position: absolute;
+  top: 12px;
+}
+.nav-menu {
+  position: absolute;
+  right: 20px;
+}
+.nav-menu button {
+  background-color: #3c3c3c;
+  color: white;
+}
+.nav-menu mat-menu {
+  margin-top: 200px;
+}

@@ -1,0 +1,27 @@
+<mat-card class="nav">
+  <img src="../../../assets/images/logo.png" alt="HIT Logo" class="nav-logo" />
+  <div class="nav-menu">
+    <button mat-mini-fab [matMenuTriggerFor]="menu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="Play()">Thi</button>
+      <button mat-menu-item (click)="Infomation()">Thông tin cá nhân</button>
+      <button mat-menu-item (click)="LogOut()">Đăng xuất( {{ name }} )</button>
+    </mat-menu>
+  </div>
+</mat-card>
+<div class="user-wrapper">
+  <mat-card class="user-box container" style="margin: 0; padding: 40px 0px;">
+    <form class="signup" [formGroup]="form" class="mat-tab">
+      <h3 class="title">THÔNG TIN CÁ NHÂN</h3>
+      <input placeholder="Mã Sinh viên" formControlName="studentId" class="input" required />
+      <input placeholder="Tên sinh viên" formControlName="name" class="input" required />
+      <input placeholder="Số điện thoại" formControlName="phone" class="input" required />
+      <input placeholder="Email" type="email" formControlName="email" class="input" required />
+      <button (click)="Update()" [disabled]="form.invalid" mat-raised-button class="submit-button">
+        CẬP NHẬT
+      </button>
+    </form>
+  </mat-card>
+</div>

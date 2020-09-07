@@ -1,0 +1,210 @@
+<mat-card *ngIf="!status" class="time-out">
+  <h2>Hết giờ</h2>
+  <h3>
+    Bạn đã hoàn thành xong phần thi IQ và EQ của mình. Cảm ơn bạn đã tham gia thi tuyển thành viên của câu lạc bộ Tin
+    học HIT
+  </h3>
+</mat-card>
+<div class="row wrapper" *ngIf="status">
+  <div class="scollbar" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #ff7043; font-weight: bold;"> Trắc nghiệm </mat-panel-title>
+          <mat-panel-description> Bài kiểm tra EQ,IQ </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item
+            *ngFor="let item of listQ; let i = index"
+            [class.selected]="item === selectedQuestion"
+            [style.background-color]="item.answered && item !== selectedQuestion ? '#FF7043' : ''"
+            (click)="onSelect(item, i)"
+          >
+            <button mat-icon-button style="margin-right: 10px;">Câu {{ i + 1 }} :</button>
+            <span>{{ item.questionId.content | slice: 0:35 }}</span>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #ff7043; font-weight: bold;"> Lập trình </mat-panel-title>
+          <mat-panel-description> Lập trình căn bản </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item
+            *ngFor="let item of listP; let i = index"
+            [class.selected]="item === selectedProblem"
+            (click)="onSelectProblem(item, i)"
+          >
+            <button mat-icon-button style="margin-right: 10px;">Câu {{ i + 1 }} :</button>
+            <span>{{ item.problemId.content | slice: 0:35 }}</span>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #ff7043; font-weight: bold;"> Đồ Hoạ </mat-panel-title>
+          <mat-panel-description> Photoshop, Illustrator </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let item of listD; let i = index" (click)="onSelectDesign(item, i)">
+            <button mat-icon-button style="margin-right: 10px;">Câu {{ i + 1 }} :</button>
+            <span>{{ item.title | slice: 0:35 }}</span>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- ========================================================= -->
+
+  <div class="col-xs-3 col-sm-3 col-md-9 col-lg-9" *ngIf="tab == 0">
+    <mat-card class="display-card">
+      <div class="timer">
+        <span class="timer-text">{{ timeDis.minute }} : {{ timeDis.seconds }}</span>
+      </div>
+      <div *ngIf="selectedQuestion" class="question">
+        <h3 class="question-content">{{ selectedQuestion.questionId.content }}</h3>
+        <div class="row">
+          <div class="col-md-6 question-item" *ngFor="let item of selectedQuestion.questionId.options">
+            <button
+              class="answer"
+              mat-raised-button
+              [style.background-color]="item.answer == selectedQuestion.answer ? '#42a5f5' : '#FF7043'"
+              (click)="SelectAns($event)"
+            >
+              {{ item.answer }}
+            </button>
+          </div>
+        </div>
+        <div class="row direction">
+          <div class="col-6">
+            <div class="direction-left">
+              <button [disabled]="setButton() === 1" (click)="Last()" mat-raised-button class="direction-button">
+                Trước
+              </button>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="direction-right">
+              <button [disabled]="setButton() === 2" (click)="Next()" mat-raised-button class="direction-button">
+                Sau
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- ========================================================= -->
+
+  <div class="col-xs-3 col-sm-3 col-md-9 col-lg-9" *ngIf="tab == 1">
+    <mat-card class="display-card">
+      <div class="timer">
+        <span class="timer-text">{{ timeDis.minute }} : {{ timeDis.seconds }}</span>
+      </div>
+      <div *ngIf="selectedProblem" class="question">
+        <h3 class="question-content">{{ selectedProblem.problemId.content }}</h3>
+        <div class="row">
+          <div class="col-md-6 in-out">
+            <p>Input</p>
+            <div class="in-out-box">
+              <pre>{{ selectedProblem.problemId.input }}</pre>
+            </div>
+          </div>
+          <div class="col-md-6 in-out">
+            <p>Output</p>
+            <div class="in-out-box">
+              <pre>{{ selectedProblem.problemId.output }}</pre>
+            </div>
+          </div>
+        </div>
+        <div class="uploader-box">
+          <p>Chỉ tải lên file main.cpp, main.c, main.py... Không tải lên cả project</p>
+          <input type="file" class="uploader" accept=".cpp,.c,.py," (change)="handleProblemFile($event.target.files)" />
+          <br />
+          <button mat-raised-button class="submit-button" (click)="onSendFileP()">Gửi đi</button>
+        </div>
+        <div class="row direction">
+          <div class="col-6">
+            <div class="direction-left">
+              <button
+                [disabled]="setProblemButton() === 1"
+                (click)="LastProblem()"
+                mat-raised-button
+                class="direction-button"
+              >
+                Trước
+              </button>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="direction-right">
+              <button
+                [disabled]="setProblemButton() === 2"
+                (click)="NextProblem()"
+                mat-raised-button
+                class="direction-button"
+              >
+                Sau
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- ========================================================= -->
+
+  <div class="col-xs-3 col-sm-3 col-md-9 col-lg-9" *ngIf="tab == 2">
+    <mat-card class="display-card">
+      <div class="timer">
+        <span class="timer-text">{{ timeDis.minute }} : {{ timeDis.seconds }}</span>
+      </div>
+      <div *ngIf="selectedDesign" class="question">
+        <h3 class="question-content">{{ selectedDesign.content }}</h3>
+        <div>
+          <ul>
+            <li *ngFor="let item of selectedDesign.requirement">{{ item.item }}</li>
+          </ul>
+        </div>
+        <h5 [hidden]="setDesignButton() !== 1" class="download">
+          <a href="../../../../assets/design/HIT.rar" download>File download cho cả 3 phần thi</a>
+        </h5>
+        <div class="uploader-box">
+          <input type="file" class="uploader" accept=".png,.jpg," (change)="handleDesignFile($event.target.files)" />
+          <br />
+          <button mat-raised-button class="submit-button" (click)="onSendFileD()">Gửi đi</button>
+        </div>
+        <div class="row direction">
+          <div class="col-6">
+            <div class="direction-left">
+              <button
+                [disabled]="setDesignButton() === 1"
+                (click)="LastDesign()"
+                mat-raised-button
+                class="direction-button"
+              >
+                Trước
+              </button>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="direction-right">
+              <button
+                [disabled]="setDesignButton() === 2"
+                (click)="NextDesign()"
+                mat-raised-button
+                class="direction-button"
+              >
+                Sau
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

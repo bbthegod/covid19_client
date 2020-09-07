@@ -1,0 +1,12 @@
+<mat-card class="nav">
+  <img src="../../../assets/images/logo.png" alt="HIT Logo" class="nav-logo" />
+  <div class="nav-menu">
+    <button mat-mini-fab color="primary" (click)="LogOut()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+</mat-card>
+<div *ngIf="!start" class="button">
+  <button (click)="Start()" mat-raised-button class="start-button">Bắt đầu</button>
+</div>
+<app-play *ngIf="start" [socket]="socket"></app-play>

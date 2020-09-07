@@ -1,0 +1,117 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+.login-box {
+  width: 50%;
+  border-radius: 10px;
+  height: 600px;
+  background-color: #212121;
+}
+.right-tab {
+  width: 50%;
+  height: 600px;
+  display: flex;
+  background: #ff7043;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.right-button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  width: 300px;
+  height: 50px;
+  text-transform: uppercase;
+}
+.right-button:hover {
+  background: #42a5f5;
+}
+.left-tab {
+  width: 50%;
+  height: 600px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.border-image {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  border-radius: 50%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+.image {
+  width: 100px;
+}
+.hello {
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: bold;
+}
+.logo {
+  width: 100px;
+}
+.login {
+  margin: 20px;
+  text-align: center;
+}
+.title {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.mat-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 600px;
+}
+.input {
+  width: 80%;
+  margin-top: 10px;
+  min-height: 48px;
+  border: none;
+  border-radius: 2px;
+  text-indent: 10px;
+  background-color: #2f2f2f;
+  font-size: 16px;
+  color: white;
+}
+.submit-button {
+  border-radius: 25px;
+  width: 300px;
+  height: 50px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-color: #ff7043;
+}
+.hide {
+  position: absolute;
+  top: 257px;
+  right: 63px;
+  color: white;
+}
+.hide-password {
+  width: 80%;
+  position: relative;
+  padding: 0 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.hide-password-text {
+  color: gray;
+  position: absolute;
+  top: 2px;
+  left: 50px;
+  font-size: 15px;
+}

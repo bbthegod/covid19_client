@@ -1,0 +1,32 @@
+<div class="login-wrapper">
+  <mat-card class="login-box container" style="margin: 0; padding: 0;">
+    <div class="row">
+      <div class="left-tab">
+        <div>
+          <form [formGroup]="formLogin" class="login" (submit)="Login()" class="mat-tab">
+            <h3 class="title">Đăng Nhập</h3>
+            <input placeholder="Mã Sinh Viên" required formControlName="studentId" class="input" />
+            <input
+              placeholder="Mật Khẩu"
+              [type]="hide ? 'password' : 'text'"
+              required
+              formControlName="password"
+              class="input"
+            />
+            <div class="hide-password" (click)="hide = !hide">
+              <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+              <span class="hide-password-text">Hiện mật khẩu</span>
+            </div>
+            <button mat-raised-button [disabled]="formLogin.invalid" class="submit-button">
+              Đăng nhập
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="right-tab">
+        <div class="border-image"><img src="../../../assets/images/LogoHIT.png" alt="" class="image" /></div>
+        <h3 class="hello">Xin chào bạn !</h3>
+      </div>
+    </div>
+  </mat-card>
+</div>
